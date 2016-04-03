@@ -2,3 +2,4 @@
 - 提交测试
 - Git for Windows Gui 提交测试
 - OpenSSH 提交测试
+- 非Github用户使用https提交（有SSH）
