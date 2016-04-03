@@ -1,3 +1,4 @@
 - SourceTree客户端测试
 - 提交测试
+- Git for Windows Gui 提交测试
 - OpenSSH 提交测试
