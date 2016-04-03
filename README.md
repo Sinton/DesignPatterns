@@ -1,9 +1,9 @@
-### Learning Design Patterns notes [中文版](https://github.com/Sinton/DesignPatterns/blob/master/README_CN.md)
-# Document tree
+## Learning Design Patterns notes [中文版](https://github.com/Sinton/DesignPatterns/blob/master/README_CN.md)
+### Document tree
 
-> DesignPatterns Demo/
-> - Strategy/
->   - **PrinterSalesSystem/**
+> ##### Demo
+> - **Strategy/**
+>   - *PrinterSalesSystem/*
 >     - src/
 >       - zjut.model/bean/
 >         - Discount.java
