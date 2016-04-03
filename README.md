@@ -1,5 +1,27 @@
-- SourceTree客户端测试
-- 提交测试
-- Git for Windows Gui 提交测试
-- OpenSSH 提交测试
-- 非Github用户使用https提交（有SSH）
+### Learning Design Patterns notes
+
+# Document tree
+
+DesignPatterns Demo/
+├── Strategy/
+│   ├── PrinterSalesSystem/
+│   │   └──src/
+│   │      ├──zjut.model/bean/
+│   │      │  ├──Discount.java
+│   │      │  └──Printer.java
+│   │      ├──zjut.model/discount/
+│   │      │  ├──FixedDiscount.java
+│   │      │  ├──NewDiscount.java
+│   │      │  ├──RateDiscount.java
+│   │      │  └──Undiscounted.java
+│   │      ├──zjut.model/printer/
+│   │      │  ├──CanonPrinter.java
+│   │      │  ├──HpPrinter.java
+│   │      │  └──LenovoPrinter.java
+│   │      ├──zjut.model/utils/
+│   │      │  ├──Repository.java
+│   │      │  └──Tools.java
+│   │      └──zjut.view/
+│   │         └──MainApplication.java
+│   └── .../
+└── .../
