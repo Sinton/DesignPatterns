@@ -3,3 +3,5 @@
 > ##### Demo
 > - **Strategy(策略模式)/**
 >   - *[PrinterSalesSystem/](https://github.com/Sinton/DesignPatterns/blob/master/Strategy/PrinterSalesSystem/README.md)*
+> - **Observer(观察者模式)/**
+>   - *[StockTradingSystem/](https://github.com/Sinton/DesignPatterns/blob/master/Observer/StockTradingSystem/README.md)*
