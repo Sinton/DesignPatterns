@@ -28,7 +28,7 @@ public class MainApplication extends JFrame {
 	private double total = 0;
     
 	MainApplication() {
-		setTitle("´òÓ¡»úÏúÊÛÏµÍ³");
+		setTitle("æ‰“å°æœºé”€å”®ç³»ç»Ÿ");
 		setLayout(new FlowLayout());
 		Repository.initProperties();
 		intiComponent();
@@ -42,12 +42,12 @@ public class MainApplication extends JFrame {
 	}
 	
 	/**
-     * ³õÊ¼»¯GUI½çÃæ
+     * åˆå§‹åŒ–GUIç•Œé¢
      */
 	private void intiComponent() {
 		printers = tools.getAllPrinters();
 		discounts = tools.getAllDiscounts();
-		String[] tableTitle 		= {"´òÓ¡»ú", "ÕÛ¿Û·½Ê½", "ÊıÁ¿", "µ¥¼Û", "Êµ¼ÊÏúÊÛµ¥¼Û", "ºÏ¼Æ"};
+		String[] tableTitle 		= {"æ‰“å°æœº", "æŠ˜æ‰£æ–¹å¼", "æ•°é‡", "å•ä»·", "å®é™…é”€å”®å•ä»·", "åˆè®¡"};
 		String[][] tableContents 	= null;
 		DefaultTableModel model = new DefaultTableModel(tableContents, tableTitle) {
 			public boolean isCellEditable(int row, int column) {
@@ -55,21 +55,21 @@ public class MainApplication extends JFrame {
 			}
 		};
 		
-        final JTextField textNumber 			= new JTextField(4);
+        final JTextField textNumber			= new JTextField(4);
         final JComboBox<String> boxBrand		= new JComboBox<String>(new DefaultComboBoxModel(printers.toArray()));
         final JComboBox<String> boxDiscount	= new JComboBox<String>(new DefaultComboBoxModel(discounts.toArray()));
         final JTable tableCart				= new JTable(model);
-        final JScrollPane scroll 				= new JScrollPane(tableCart);
-        final JLabel labelTotal 				= new JLabel("×Ü¼ÛºÏ¼Æ:" + total);
-		JLabel labelSelectName 		= new JLabel("ÇëÑ¡Ôñ´òÓ¡»úÃû³Æ:");
-		JLabel labelSelectDiscount	= new JLabel("ÇëÑ¡ÕÛ¿ÛÀàĞÍ:");
-		JLabel labelNumber 			= new JLabel("ÇëÑ¡ÔñÊıÁ¿:");
-    	JButton btnAddCart 			= new JButton("Ìí¼Óµ½ÎïÆ·Çåµ¥");
-    	JButton btnExit 				= new JButton("ÍË³ö");
+        final JScrollPane scroll				= new JScrollPane(tableCart);
+        final JLabel labelTotal				= new JLabel("æ€»ä»·åˆè®¡:" + total);
+		JLabel labelSelectName		= new JLabel("è¯·é€‰æ‹©æ‰“å°æœºåç§°:");
+		JLabel labelSelectDiscount	= new JLabel("è¯·é€‰æŠ˜æ‰£ç±»å‹:");
+		JLabel labelNumber				= new JLabel("è¯·é€‰æ‹©æ•°é‡:");
+    	JButton btnAddCart				= new JButton("æ·»åŠ åˆ°ç‰©å“æ¸…å•");
+    	JButton btnExit				= new JButton("é€€å‡º");
     	tableCart.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
     	textNumber.setText("1");
     	
-		// Ìí¼Ó´òÓ¡»úµ½ÎïÆ·Çåµ¥
+		// æ·»åŠ æ‰“å°æœºåˆ°ç‰©å“æ¸…å•
 		btnAddCart.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -82,7 +82,7 @@ public class MainApplication extends JFrame {
 				String salePrice = null;
 				String price = null;
 				try {
-					// ·´Éä´òÓ¡»úÀà¡¢ÕÛ¿ÛÀà
+					// åå°„æ‰“å°æœºç±»ã€æŠ˜æ‰£ç±»
 					Class<?> anyPrinterClass = Class.forName("zjut.model.printer." + printerClassName);
 					Class<?> anyDiscountClass = Class.forName("zjut.model.discount." + discountClassName);
 					Printer anyPrinter = (Printer) anyPrinterClass.newInstance();
@@ -91,16 +91,16 @@ public class MainApplication extends JFrame {
 					salePrice = String.format("%.2f", anyDiscount.salePrice(anyPrinter.getPrice()));
 					price = String.format("%.2f", anyDiscount.discountPrice(anyPrinter.getPrice(), Integer.valueOf(amount)));
 				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException  exception) {
-					System.out.println("ÊµÀı»¯ÀàÒì³£");
+					System.out.println("å®ä¾‹åŒ–ç±»å¼‚å¸¸");
 				}
 				DefaultTableModel tableModel = (DefaultTableModel) tableCart.getModel();
 				tableModel.addRow(new String[] { printer, discount, amount, unitPrice, salePrice, price });
 				total += Double.parseDouble(price);
-				labelTotal.setText("×Ü¼ÛºÏ¼Æ:" + String.format("%.2f£¤", total));
+				labelTotal.setText("æ€»ä»·åˆè®¡:" + String.format("%.2fï¿¥", total));
 			}
 		});
 		
-		// ÍË³öÓ¦ÓÃ³ÌĞò
+		// é€€å‡ºåº”ç”¨ç¨‹åº
 		btnExit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -108,7 +108,7 @@ public class MainApplication extends JFrame {
 			}
 		});
 		
-    	// Ìí¼Óµ½²¼¾ÖÈİÆ÷ÖĞ
+    	// æ·»åŠ åˆ°å¸ƒå±€å®¹å™¨ä¸­
     	add(labelSelectName);
     	add(boxBrand);
     	add(labelSelectDiscount);

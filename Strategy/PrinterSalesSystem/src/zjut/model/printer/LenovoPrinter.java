@@ -5,7 +5,7 @@ import zjut.model.bean.Printer;
 public class LenovoPrinter extends Printer {
 	
 	public LenovoPrinter() {
-		this.setPrintName("ÁªÏë´òÓ¡»ú");
+		this.setPrintName("è”æƒ³æ‰“å°æœº");
 		this.setPrice(12345);
 	}
 }

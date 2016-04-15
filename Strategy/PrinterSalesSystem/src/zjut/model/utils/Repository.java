@@ -9,21 +9,21 @@ import java.util.Properties;
 public class Repository {
 	
 	/**
-	 * È«²¿´òÓ¡»úÃûÓëÆäÀàÃûµÄKey-Value
+	 * å…¨éƒ¨æ‰“å°æœºåä¸å…¶ç±»åçš„Key-Value
 	 */
 	public static HashMap<String, String> printersRepository = new HashMap<String, String>();
 	
 	/**
-	 * È«²¿ÕÛ¿ÛÃû³ÆÓëÆäÀàÃûµÄKey-Value
+	 * å…¨éƒ¨æŠ˜æ‰£åç§°ä¸å…¶ç±»åçš„Key-Value
 	 */
 	public static HashMap<String, String> discountsRepository = new HashMap<String, String>();
 	
 	/**
-	 * ³õÊ¼»¯¶ÁÈ¡ÅäÖÃÎÄ¼ş
+	 * åˆå§‹åŒ–è¯»å–é…ç½®æ–‡ä»¶
 	 */
 	public static void initProperties() {
 		String[] propertiesArray = {"printers.properties", "discounts.properties"};
-		// ¼ÓÔØ´òÓ¡»úÅäÖÃÎÄ¼şÊôĞÔÁĞ±í¡¢ÕÛ¿Û·½Ê½ÅäÖÃÎÄ¼şÊôĞÔÁĞ±í
+		// åŠ è½½æ‰“å°æœºé…ç½®æ–‡ä»¶å±æ€§åˆ—è¡¨ã€æŠ˜æ‰£æ–¹å¼é…ç½®æ–‡ä»¶å±æ€§åˆ—è¡¨
 		for (int i = 0; i < propertiesArray.length; i++) {
 			try {
 				Properties properties = new Properties();
@@ -42,7 +42,7 @@ public class Repository {
 					}
 				}
 			} catch (IOException exception) {
-				System.out.println("¶ÁÈ¡ÅäÖÃÎÄ¼ş³ö´í");
+				System.out.println("è¯»å–é…ç½®æ–‡ä»¶å‡ºé”™");
 			}
 		}
 	}

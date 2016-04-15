@@ -3,17 +3,17 @@ package zjut.model.bean;
 public abstract class Printer {
 	
 	/**
-	 * ´òÓ¡»úÃû³Æ
+	 * æ‰“å°æœºåç§°
 	 */
 	protected String printerName;
 	
 	/**
-	 * ´òÓ¡»úÊÛ¼Û
+	 * æ‰“å°æœºå”®ä»·
 	 */
 	protected double price;
 	
 	/**
-	 * »ñÈ¡´òÓ¡»úÃû³Æ
+	 * è·å–æ‰“å°æœºåç§°
 	 * @return
 	 */
 	public String getPrintName() {
@@ -21,7 +21,7 @@ public abstract class Printer {
 	}
 	
 	/**
-	 * ÉèÖÃ´òÓ¡»úÃû³Æ
+	 * è®¾ç½®æ‰“å°æœºåç§°
 	 * @param printerName
 	 */
 	protected void setPrintName(String printerName) {
@@ -29,7 +29,7 @@ public abstract class Printer {
 	}
 	
 	/**
-	 * »ñÈ¡´òÓ¡»ú¼Û¸ñ
+	 * è·å–æ‰“å°æœºä»·æ ¼
 	 * @return
 	 */
 	public double getPrice() {
@@ -37,7 +37,7 @@ public abstract class Printer {
 	}
 	
 	/**
-	 * ÉèÖÃ´òÓ¡»ú¼Û¸ñ
+	 * è®¾ç½®æ‰“å°æœºä»·æ ¼
 	 * @param price
 	 */
 	protected void setPrice(double price) {

@@ -8,7 +8,7 @@ import java.util.Map;
 public class Tools {
 	
 	/**
-	 * »ñÈ¡ËùÓĞ´òÓ¡»ú
+	 * è·å–æ‰€æœ‰æ‰“å°æœº
 	 * @return
 	 */
 	public ArrayList<String> getAllPrinters() {
@@ -18,7 +18,7 @@ public class Tools {
 	}
 
 	/**
-	 * »ñÈ¡ËùÓĞÕÛ¿Û·½Ê½
+	 * è·å–æ‰€æœ‰æŠ˜æ‰£æ–¹å¼
 	 * @return
 	 */
 	public ArrayList<String> getAllDiscounts() {
@@ -28,7 +28,7 @@ public class Tools {
 	}
 	
 	/**
-	 * Í¨¹ıÃû³ÆValue²éÕÒ¸ÃÀà¶ÔÓ¦µÄKey
+	 * é€šè¿‡åç§°ValueæŸ¥æ‰¾è¯¥ç±»å¯¹åº”çš„Key
 	 * @param name
 	 * @return
 	 */

@@ -5,7 +5,7 @@ import zjut.model.bean.Printer;
 public class HpPrinter extends Printer {
 
 	public HpPrinter() {
-		this.setPrintName("»İÆÕ´òÓ¡»ú");
+		this.setPrintName("æƒ æ™®æ‰“å°æœº");
 		this.setPrice(234);
 	}
 }
