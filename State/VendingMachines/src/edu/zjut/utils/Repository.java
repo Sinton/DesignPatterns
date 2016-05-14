@@ -21,7 +21,7 @@ public class Repository {
 	 * @return
 	 */
 	public ArrayList<Drink> setDrinkList() {
-		String JsonContext = new JsonParse().readJsonFile(FILE_Name);
+		String JsonContext = new ReadJson().readJsonFile(FILE_Name);
 		String name = null;
 		String url = null;
 		Integer price = null;

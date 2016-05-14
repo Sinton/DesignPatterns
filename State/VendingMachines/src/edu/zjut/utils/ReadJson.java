@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class JsonParse {
+public class ReadJson {
 	
 	/**
 	 * 读取json文件
