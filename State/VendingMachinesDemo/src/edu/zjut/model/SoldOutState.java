@@ -1,7 +1,7 @@
 package edu.zjut.model;
 
 /** 
- * 售罄的状态 
+ * 售罄状态 
  */
 public class SoldOutState implements State {
 	

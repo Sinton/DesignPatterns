@@ -1,7 +1,7 @@
 package edu.zjut.model;
 
 /** 
- * 已投入钱的状态 
+ * 已投币状态 
  */
 public class HasMoneyState implements State {
 

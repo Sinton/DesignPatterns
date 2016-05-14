@@ -9,7 +9,6 @@ public class VendingMachine {
 	private State hasMoneyState;
 	private State soldState;
 	private State soldOutState;
-	private State winnerState;
 
 	private int count = 0;// 库存
 	private State currentState = noMoneyState;
@@ -36,11 +35,12 @@ public class VendingMachine {
 
 	public void turnCrank() {
 		currentState.turnCrank();
-		if (currentState == soldState || currentState == winnerState)
+		if (currentState == soldState)
 			currentState.dispense();
 	}
 
 	public void dispense() {
+		// 提示客户购买信息
 		System.out.println("发出一件商品...");
 		if (count != 0)
 			count -= 1;

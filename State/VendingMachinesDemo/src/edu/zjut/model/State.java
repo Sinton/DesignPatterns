@@ -1,14 +1,14 @@
 package edu.zjut.model;
 
 public interface State {
-	
+
 	/**
-	 * 放钱
+	 * 投币
 	 */
 	public void insertMoney();
 
 	/**
-	 * 退钱
+	 * 退币
 	 */
 	public void backMoney();
 
@@ -20,5 +20,5 @@ public interface State {
 	/**
 	 * 出商品
 	 */
-	public void dispense();  
+	public void dispense();
 }

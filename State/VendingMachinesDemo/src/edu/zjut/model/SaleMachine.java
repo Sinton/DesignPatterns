@@ -2,7 +2,7 @@ package edu.zjut.model;
 
 public class SaleMachine {
 	
-	public String buy(String type, int money) {
+	public String buy(String type, double money) {
 		String message = null; 
 
 		if (type.equals("Orange")) {

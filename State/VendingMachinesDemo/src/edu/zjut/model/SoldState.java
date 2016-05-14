@@ -1,7 +1,7 @@
 package edu.zjut.model;
 
 /**
- * 准备出商品的状态,该状态下，不会有任何用户的操作
+ * 出售状态
  */
 public class SoldState implements State {
 	

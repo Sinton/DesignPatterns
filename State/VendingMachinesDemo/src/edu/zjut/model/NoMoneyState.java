@@ -1,7 +1,7 @@
 package edu.zjut.model;
 
 /** 
- * 没投钱的状态 
+ * 未投币状态 
  */  
 public class NoMoneyState implements State {
 
