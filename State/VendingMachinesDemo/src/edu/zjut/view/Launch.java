@@ -11,8 +11,8 @@ public class Launch extends JFrame{
 	private static final long serialVersionUID = 1L;
 	final static VendingMachine machine = new VendingMachine(30);
 	
-	private static final CoinPanel panelCoinSlot = new CoinPanel();
 	private static final TipPanel panelTip = new TipPanel();
+	private static final CoinPanel panelCoinSlot = new CoinPanel(panelTip);
 	private static final DrinkStorePanel panelDrinkStore = new DrinkStorePanel(panelCoinSlot, panelTip);
 	
 	public Launch() {

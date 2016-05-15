@@ -10,20 +10,18 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import edu.zjut.model.SaleMachine;
-
 public class DrinkStorePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
 	private JButton btnOrange;
-	private JButton btnBeer;
-	private JButton btnCoffee;
+	private JButton btnCoke;
+	private JButton btnFenda;
 	private double orangePrice = 2.5;
-	private double beerPrice = 3.0;
+	private double cokePrice = 3.0;
 	private double coffeePrice = 4.0;
 	private int orangeNum = 10;
-	private int beerNum = 10;
+	private int cokeNum = 10;
 	private int coffeeNum = 10;
 	private final CoinPanel panelCoinSlot;
 	private final TipPanel panelTip;
@@ -33,12 +31,12 @@ public class DrinkStorePanel extends JPanel {
 		this.panelTip = panelTip;
 		
 		ImageIcon imgOrange = new ImageIcon("resource/orange.jpg");
-		ImageIcon imgBeer = new ImageIcon("resource/beer.jpeg");
-		ImageIcon imgCoffee = new ImageIcon("resource/coffee.jpeg");
+		ImageIcon imgCoke = new ImageIcon("resource/coke.jpg");
+		ImageIcon imgFenda = new ImageIcon("resource/fenda.jpg");
 
 		btnOrange = new JButton("橙汁价格 :2.5 元", imgOrange);
-		btnBeer = new JButton("啤酒价格 : 3 元", imgBeer);
-		btnCoffee = new JButton("咖啡价格 :4 元", imgCoffee);
+		btnCoke = new JButton("可乐价格 : 3 元", imgCoke);
+		btnFenda = new JButton("咖啡价格 :4 元", imgFenda);
 		
 		setLayout(new GridLayout(0, 3));
 
@@ -47,22 +45,25 @@ public class DrinkStorePanel extends JPanel {
 				double money = Double.valueOf(panelCoinSlot.textCurrentMoney.getText());
 				Launch.machine.turnCrank();
 				if (money > 0) {
-					if (checkBuyOrange()) {
-						SaleMachine client = new SaleMachine();
-						String back = client.buy("Orange", money);
-						// 修改饮料库存
-						setOrangeNum(getOrangeNum() - 1);
-						panelCoinSlot.setCurrentMoney(true, orangePrice);
-						// 修改自动售货机当前状态
-						Launch.machine.setState(Launch.machine.getSoldState());
-						// Launch.machine.turnCrank();
-						// 修改UI界面提示
-						panelTip.labelTakeDrinksTip.setText(back);
+					if (!checkBuyOrange()) {
+						if (checkBuyOrange()) {
+							// 修改饮料库存
+							setOrangeNum(getOrangeNum() - 1);
+							panelCoinSlot.setCurrentMoney(true, orangePrice);
+							// 修改自动售货机当前状态
+							Launch.machine.setState(Launch.machine.getSoldState());
+							// 修改UI界面提示
+							panelTip.labelTakeDrinksTip.setText("请取走饮料!");
+						} else {
+							// 饮料已售完或暂时不能找钱，需要提示客户
+							panelTip.labelTakeDrinksTip.setText("已经售罄");
+							Launch.machine.setState(Launch.machine.getSoldOutState());
+						}
 					} else {
-						// 饮料已售完或暂时不能找钱，需要提示客户
-						panelTip.labelTakeDrinksTip.setText("已经售罄");
-						Launch.machine.setState(Launch.machine.getSoldOutState());
-						//Launch.machine.turnCrank();
+						// 修改自动售货机当前状态
+						Launch.machine.setState(Launch.machine.getNoMoneyState());
+						// 修改UI界面提示
+						panelTip.labelTakeDrinksTip.setText("金额不够，请投币");
 					}
 				} else {
 					panelTip.labelTakeDrinksTip.setText("目前无可用金额，请先投币！");
@@ -70,22 +71,26 @@ public class DrinkStorePanel extends JPanel {
 			}
 		});
 
-		btnBeer.addActionListener(new ActionListener() {
+		btnCoke.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				double money = Double.valueOf(panelCoinSlot.textCurrentMoney.getText());
 				Launch.machine.turnCrank();
 				if (money > 0) {
-					if (checkBuyBeer()) {
-						SaleMachine client = new SaleMachine();
-						String back = client.buy("Beer", money);
-						// 修改饮料库存
-						setBeerNum(getBeerNum() - 1);
-						panelCoinSlot.setCurrentMoney(true, beerPrice);
-						// 修改自动售货机当前状态
-						Launch.machine.setState(Launch.machine.getSoldState());
-						// Launch.machine.turnCrank();
-						// 修改UI界面提示
-						panelTip.labelTakeDrinksTip.setText(back);
+					if (!checkBuyCoke()) {
+						if (checkBuyCoke()) {
+							// 修改饮料库存
+							setCokeNum(getCokeNum() - 1);
+							panelCoinSlot.setCurrentMoney(true, cokePrice);
+							// 修改自动售货机当前状态
+							Launch.machine.setState(Launch.machine.getSoldState());
+							// 修改UI界面提示
+							panelTip.labelTakeDrinksTip.setText("请取走饮料!");
+						} else {
+							// 修改自动售货机当前状态
+							Launch.machine.setState(Launch.machine.getNoMoneyState());
+							// 修改UI界面提示
+							panelTip.labelTakeDrinksTip.setText("金额不够，请投币");
+						}
 					} else {
 						// 饮料已售完或暂时不能找钱，需要提示客户
 						panelTip.labelTakeDrinksTip.setText("已经售罄");
@@ -96,22 +101,26 @@ public class DrinkStorePanel extends JPanel {
 			}
 		});
 
-		btnCoffee.addActionListener(new ActionListener() {
+		btnFenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				double money = Double.valueOf(panelCoinSlot.textCurrentMoney.getText());
 				Launch.machine.turnCrank();
 				if (money > 0) {
-					if (checkBuyCoffee()) {
-						SaleMachine client = new SaleMachine();
-						String back = client.buy("Coffee", money);
-						// 修改饮料库存
-						setCoffeeNum(getCoffeeNum() - 1);
-						panelCoinSlot.setCurrentMoney(true, coffeePrice);
-						// 修改自动售货机当前状态
-						Launch.machine.setState(Launch.machine.getSoldState());
-						// Launch.machine.turnCrank();
-						// 修改UI界面提示
-						panelTip.labelTakeDrinksTip.setText(back);
+					if (!checkIsNullByFenda()) {
+						if (checkBuyFenda()) {
+							// 修改饮料库存
+							setFendaNum(getFendaNum() - 1);
+							panelCoinSlot.setCurrentMoney(true, coffeePrice);
+							// 修改自动售货机当前状态
+							Launch.machine.setState(Launch.machine.getSoldState());
+							// 修改UI界面提示
+							panelTip.labelTakeDrinksTip.setText("请取走饮料!");
+						} else {
+							// 修改自动售货机当前状态
+							Launch.machine.setState(Launch.machine.getNoMoneyState());
+							// 修改UI界面提示
+							panelTip.labelTakeDrinksTip.setText("金额不够，请投币");
+						}
 					} else {
 						// 饮料已售完或暂时不能找钱，需要提示客户
 						panelTip.labelTakeDrinksTip.setText("已经售罄");
@@ -124,71 +133,71 @@ public class DrinkStorePanel extends JPanel {
 
 		// 设置按钮的背景色
 		btnOrange.setBackground(Color.WHITE);
-		btnBeer.setBackground(Color.WHITE);
-		btnCoffee.setBackground(Color.WHITE);
+		btnCoke.setBackground(Color.WHITE);
+		btnFenda.setBackground(Color.WHITE);
 
 		// 设置按钮文本的位置
 		btnOrange.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnBeer.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnCoffee.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnCoke.setHorizontalTextPosition(SwingConstants.CENTER);
+		btnFenda.setHorizontalTextPosition(SwingConstants.CENTER);
 		btnOrange.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnBeer.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnCoffee.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnCoke.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnFenda.setVerticalTextPosition(SwingConstants.BOTTOM);
 
 		// 设置按钮提示信息
 		btnOrange.setToolTipText("点击选择橙汁");
-		btnBeer.setToolTipText("点击选择啤酒");
-		btnCoffee.setToolTipText("点击选择咖啡");
+		btnCoke.setToolTipText("点击选择可乐");
+		btnFenda.setToolTipText("点击选择咖啡");
 
 		// 添加到面板中
 		add(btnOrange);
-		add(btnBeer);
-		add(btnCoffee);
+		add(btnCoke);
+		add(btnFenda);
 	}
 	
 	/**
 	 * 检查橙汁是否可售
 	 */
 	public boolean checkBuyOrange() {
-		return getOrangeNum() > 0 && orangePrice <= panelCoinSlot.getCurrentMoney()? true : false;
+		return orangePrice <= panelCoinSlot.getCurrentMoney()? true : false;
 	}
 	
 	/**
 	 * 检查啤酒是否可售
 	 */
-	public boolean checkBuyBeer() {
-		return getBeerNum() > 0 && beerPrice <= panelCoinSlot.getCurrentMoney() ? true : false;
+	public boolean checkBuyCoke() {
+		return cokePrice <= panelCoinSlot.getCurrentMoney() ? true : false;
 	}
 	
 	/**
 	 * 检查咖啡是否可售
 	 */
-	public boolean checkBuyCoffee() {
-		return getCoffeeNum() > 0 && coffeePrice <= panelCoinSlot.getCurrentMoney() ? true : false;
+	public boolean checkBuyFenda() {
+		return coffeePrice <= panelCoinSlot.getCurrentMoney() ? true : false;
 	}
-
-	public void setBtnOrange(JButton btnOrange) {
-		this.btnOrange = btnOrange;
+	
+	/**
+	 * 检查芬达存货是否为空
+	 * @return
+	 */
+	public boolean checkIsNullByFenda() {
+		return getFendaNum() <= 0 ? true : false;
 	}
-
-	public JButton getBtnOrange() {
-		return btnOrange;
+	
+	/**
+	 * 检查可乐存货是否为空
+	 * @return
+	 */
+	public boolean checkIsNullByCoke() {
+		return getCokeNum() <= 0 ? true : false;
 	}
-
-	public void setBtnBeer(JButton btnBeer) {
-		this.btnBeer = btnBeer;
-	}
-
-	public JButton getBtnBeer() {
-		return btnBeer;
-	}
-
-	public void setBtnCoffee(JButton btnCoffee) {
-		this.btnCoffee = btnCoffee;
-	}
-
-	public JButton getBtnCoffee() {
-		return btnCoffee;
+	
+	/**
+	 * 检查橙汁存货是否为空
+	 * @return
+	 */
+	public boolean checkIsNullByOrange() {
+		return getOrangeNum() <= 0 ? true : false;
 	}
 
 	public int getOrangeNum() {
@@ -199,19 +208,19 @@ public class DrinkStorePanel extends JPanel {
 		this.orangeNum = orangeNum;
 	}
 
-	public int getBeerNum() {
-		return beerNum;
+	public int getCokeNum() {
+		return cokeNum;
 	}
 
-	public void setBeerNum(int beerNum) {
-		this.beerNum = beerNum;
+	public void setCokeNum(int beerNum) {
+		this.cokeNum = beerNum;
 	}
 
-	public int getCoffeeNum() {
+	public int getFendaNum() {
 		return coffeeNum;
 	}
 
-	public void setCoffeeNum(int coffeeNum) {
+	public void setFendaNum(int coffeeNum) {
 		this.coffeeNum = coffeeNum;
 	}
 }

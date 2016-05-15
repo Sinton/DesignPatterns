@@ -24,7 +24,7 @@ public class HasMoneyState implements State {
 
 	@Override
 	public void turnCrank() {
-		System.out.println("手柄已转动,切正在出货");
+		System.out.println("手柄已转动,且正在出货");
 		if (machine.getCount() > 1) {
 			machine.setState(machine.getSoldState());
 		} else {

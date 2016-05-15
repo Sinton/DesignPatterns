@@ -14,6 +14,13 @@ public class Drink {
 		this.setCount(count);
 	}
 	
+	/**
+	 * 售出一瓶饮料
+	 */
+	public void sale() {
+		this.setCount(this.getCount() - 1);
+	}
+	
 	public String getName() {
 		return name;
 	}

@@ -25,7 +25,7 @@ public class CoinPanel extends JPanel {
 	// 投币面额下拉菜单
 	JComboBox<String> boxCoins = null;
 	
-	public CoinPanel() {
+	public CoinPanel(final TipPanel panelTip) {
 		setLayout(new GridLayout(0, 5));
 		labelCoinSlot = new JLabel("投币口：");
 		labelCurrentMoney = new JLabel("当前可用金额：");
@@ -41,6 +41,7 @@ public class CoinPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent even) {
 				setCurrentMoney(false, 0.0);
+				panelTip.labelTakeDrinksTip.setText("已投币，请选购");
 			}
 		});
 		
@@ -71,7 +72,6 @@ public class CoinPanel extends JPanel {
 			textCurrentMoney.setText(String.valueOf(totalCoin));
 			Launch.machine.insertMoney();
 		}else {
-			System.out.println(totalCoin);
 			totalCoin -= price;
 			textCurrentMoney.setText(String.valueOf(totalCoin));
 		}
