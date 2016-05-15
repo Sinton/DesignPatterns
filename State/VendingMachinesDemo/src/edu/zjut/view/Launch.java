@@ -9,6 +9,7 @@ import edu.zjut.model.VendingMachine;
 public class Launch extends JFrame{
 
 	private static final long serialVersionUID = 1L;
+	
 	final static VendingMachine machine = new VendingMachine(30);
 	
 	private static final TipPanel panelTip = new TipPanel();
@@ -17,10 +18,10 @@ public class Launch extends JFrame{
 	
 	public Launch() {
 		add(panelCoinSlot, BorderLayout.NORTH);
-		add(panelDrinkStore, BorderLayout.CENTER);
-		add(panelTip, BorderLayout.SOUTH);
+		add(panelTip, BorderLayout.CENTER);
+		add(panelDrinkStore, BorderLayout.SOUTH);
 		setTitle("自动售货机");
-		setSize(500,500);
+		setSize(600,350);
 		setLocationRelativeTo(null); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);

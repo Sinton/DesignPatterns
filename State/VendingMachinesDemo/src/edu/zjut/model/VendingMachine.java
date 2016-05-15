@@ -9,9 +9,10 @@ public class VendingMachine {
 	private State hasMoneyState;
 	private State soldState;
 	private State soldOutState;
-
-	private int count = 0;// 库存
 	private State currentState = noMoneyState;
+
+	// 某种饮料的库存
+	private int count = 0;
 
 	public VendingMachine(int count) {
 		noMoneyState = new NoMoneyState(this);
@@ -40,11 +41,15 @@ public class VendingMachine {
 	}
 
 	public void dispense() {
-		System.out.println("发出一件商品...");
+		System.out.println("售出一瓶饮料");
 		if (count != 0)
 			count -= 1;
 	}
 
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
 	public int getCount() {
 		return count;
 	}
