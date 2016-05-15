@@ -40,7 +40,6 @@ public class VendingMachine {
 	}
 
 	public void dispense() {
-		// 提示客户购买信息
 		System.out.println("发出一件商品...");
 		if (count != 0)
 			count -= 1;

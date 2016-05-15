@@ -71,6 +71,7 @@ public class CoinPanel extends JPanel {
 			textCurrentMoney.setText(String.valueOf(totalCoin));
 			Launch.machine.insertMoney();
 		}else {
+			System.out.println(totalCoin);
 			totalCoin -= price;
 			textCurrentMoney.setText(String.valueOf(totalCoin));
 		}

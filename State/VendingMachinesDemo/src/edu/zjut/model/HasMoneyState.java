@@ -13,19 +13,18 @@ public class HasMoneyState implements State {
 
 	@Override
 	public void insertMoney() {
-		System.out.println("您已经投过币了，无需再投....");
+		System.out.println("您又进行了投币");
 	}
 
 	@Override
 	public void backMoney() {
 		System.out.println("退币成功");
-
 		machine.setState(machine.getNoMoneyState());
 	}
 
 	@Override
 	public void turnCrank() {
-		System.out.println("你转动了手柄");
+		System.out.println("手柄已转动,切正在出货");
 		if (machine.getCount() > 1) {
 			machine.setState(machine.getSoldState());
 		} else {

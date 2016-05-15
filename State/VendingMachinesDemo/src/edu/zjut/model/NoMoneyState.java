@@ -19,12 +19,12 @@ public class NoMoneyState implements State {
 
 	@Override
 	public void backMoney() {
-		System.out.println("您未投币，想退钱？...");
+		System.out.println("您未投币,请先投币");
 	}
 
 	@Override
 	public void turnCrank() {
-		System.out.println("您未投币，想拿东西么？...");
+		System.out.println("您未投币,无法出售");
 	}
 
 	@Override

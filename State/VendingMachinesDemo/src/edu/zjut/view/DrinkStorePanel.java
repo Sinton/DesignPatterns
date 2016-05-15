@@ -1,33 +1,36 @@
 package edu.zjut.view;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import edu.zjut.model.SaleMachine;
 
-public class SaleGUI extends JFrame {
+public class DrinkStorePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	private static final CoinPanel panelCoinSlot = new CoinPanel();
-	private static final TipPanel panelTip = new TipPanel();
-	
-	private JPanel panelDrinkStore = null;
-	private JButton btnOrange = null;
-	private JButton btnBeer = null;
-	private JButton btnCoffee = null;
+	private JButton btnOrange;
+	private JButton btnBeer;
+	private JButton btnCoffee;
 	private double orangePrice = 2.5;
 	private double beerPrice = 3.0;
 	private double coffeePrice = 4.0;
-	private int orangeNum = 3;
-	private int beerNum = 3;
-	private int coffeeNum = 4;
+	private int orangeNum = 10;
+	private int beerNum = 10;
+	private int coffeeNum = 10;
+	private final CoinPanel panelCoinSlot;
+	private final TipPanel panelTip;
 	
-	public SaleGUI() {
-		
-		panelDrinkStore = new JPanel(new GridLayout(0, 3));
+	public DrinkStorePanel(final CoinPanel panelCoinSlot, final TipPanel panelTip) {
+		this.panelCoinSlot = panelCoinSlot;
+		this.panelTip = panelTip;
 		
 		ImageIcon imgOrange = new ImageIcon("resource/orange.jpg");
 		ImageIcon imgBeer = new ImageIcon("resource/beer.jpeg");
@@ -36,6 +39,8 @@ public class SaleGUI extends JFrame {
 		btnOrange = new JButton("橙汁价格 :2.5 元", imgOrange);
 		btnBeer = new JButton("啤酒价格 : 3 元", imgBeer);
 		btnCoffee = new JButton("咖啡价格 :4 元", imgCoffee);
+		
+		setLayout(new GridLayout(0, 3));
 
 		btnOrange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
@@ -85,7 +90,6 @@ public class SaleGUI extends JFrame {
 						// 饮料已售完或暂时不能找钱，需要提示客户
 						panelTip.labelTakeDrinksTip.setText("已经售罄");
 						Launch.machine.setState(Launch.machine.getSoldOutState());
-						//Launch.machine.turnCrank();
 					}
 				} else
 					panelTip.labelTakeDrinksTip.setText("目前无可用金额，请先投币！");
@@ -112,7 +116,6 @@ public class SaleGUI extends JFrame {
 						// 饮料已售完或暂时不能找钱，需要提示客户
 						panelTip.labelTakeDrinksTip.setText("已经售罄");
 						Launch.machine.setState(Launch.machine.getSoldOutState());
-						//Launch.machine.turnCrank();
 					}
 				} else
 					panelTip.labelTakeDrinksTip.setText("目前无可用金额，请先投币！");
@@ -138,16 +141,11 @@ public class SaleGUI extends JFrame {
 		btnCoffee.setToolTipText("点击选择咖啡");
 
 		// 添加到面板中
-		panelDrinkStore.add(btnOrange);
-		panelDrinkStore.add(btnBeer);
-		panelDrinkStore.add(btnCoffee);
-
-		add(panelCoinSlot, BorderLayout.NORTH);
-		add(panelDrinkStore, BorderLayout.CENTER);
-		add(panelTip, BorderLayout.SOUTH);
-
+		add(btnOrange);
+		add(btnBeer);
+		add(btnCoffee);
 	}
-
+	
 	/**
 	 * 检查橙汁是否可售
 	 */

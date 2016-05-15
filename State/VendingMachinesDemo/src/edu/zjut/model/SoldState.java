@@ -18,7 +18,8 @@ public class SoldState implements State {
 
 	@Override
 	public void backMoney() {
-		System.out.println("正在出货，没有可退的钱");
+		System.out.println("退币成功");
+		machine.setState(machine.getNoMoneyState());
 	}
 
 	@Override

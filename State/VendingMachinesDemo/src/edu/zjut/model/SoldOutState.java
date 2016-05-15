@@ -13,17 +13,18 @@ public class SoldOutState implements State {
 
 	@Override
 	public void insertMoney() {
-		System.out.println("投币失败，商品已售罄");
+		System.out.println("投币成功");
+		machine.setState(machine.getHasMoneyState());
 	}
 
 	@Override
 	public void backMoney() {
-		System.out.println("您未投币，想退钱么？...");
+		System.out.println("您未投币,请先投币");
 	}
 
 	@Override
 	public void turnCrank() {
-		System.out.println("商品售罄，转动手柄也木有用");
+		System.out.println("商品已售罄");
 	}
 
 	@Override
