@@ -43,6 +43,7 @@ public class DrinkStorePanel extends JPanel {
 							if (drinks.get(index).getPrice() <= panelCoinSlot.getCurrentMoney()) {
 								// 售出该饮料并修改饮料库存
 								drinks.get(index).sale();
+								Launch.machine.setCount(drinks.get(index).getCount());
 								panelCoinSlot.setCurrentMoney(true, drinks.get(index).getPrice());
 								// 修改自动售货机当前状态
 								Launch.machine.setState(Launch.machine.getSoldState());

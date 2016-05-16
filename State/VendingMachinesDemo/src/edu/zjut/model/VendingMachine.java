@@ -14,16 +14,12 @@ public class VendingMachine {
 	// 某种饮料的库存
 	private int count = 0;
 
-	public VendingMachine(int count) {
+	public VendingMachine() {
 		noMoneyState = new NoMoneyState(this);
 		hasMoneyState = new HasMoneyState(this);
 		soldState = new SoldState(this);
 		soldOutState = new SoldOutState(this);
-
-		if (count > 0) {
-			this.count = count;
-			currentState = noMoneyState;
-		}
+		currentState = noMoneyState;
 	}
 
 	public void insertMoney() {
