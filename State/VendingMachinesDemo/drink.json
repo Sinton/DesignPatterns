@@ -13,4 +13,19 @@
 	"url": "resource/fenda.jpg",
 	"price": 4.0,
 	"count": 10
+}, {
+	"name": "冰红茶",
+	"url": "resource/tea.jpg",
+	"price": 4.5,
+	"count": 10
+}, {
+	"name": "农夫山泉",
+	"url": "resource/water.jpg",
+	"price": 2.0,
+	"count": 10
+}, {
+	"name": "脉动",
+	"url": "resource/maidong.jpg",
+	"price": 4.5,
+	"count": 10
 }]

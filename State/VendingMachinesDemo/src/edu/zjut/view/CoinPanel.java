@@ -15,15 +15,15 @@ public class CoinPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private double[] coins = {0.5, 1.0, 5.0, 10.0};
 	// 投币标签
-	JLabel labelCoinSlot = null;
+	private JLabel labelCoinSlot;
 	// 当前可用金额标签
-	JLabel labelCurrentMoney = null;
+	private JLabel labelCurrentMoney;
 	// 当前可用金额文本框
-	JTextField textCurrentMoney = null;
+	public JTextField textCurrentMoney;
 	// 退币按钮
-	JButton btnCoinsReturn = null;
+	private JButton btnCoinsReturn;
 	// 投币面额下拉菜单
-	JComboBox<String> boxCoins = null;
+	private JComboBox<String> boxCoins;
 	
 	public CoinPanel(final TipPanel panelTip) {
 		setLayout(new GridLayout(0, 5));
@@ -50,6 +50,9 @@ public class CoinPanel extends JPanel {
 			public void actionPerformed(ActionEvent even) {
 				textCurrentMoney.setText("0.0");
 				Launch.machine.backMoney();
+				if (getCurrentMoney() == 0.0) {
+					panelTip.labelTakeDrinksTip.setText("没有可用金额无法退币，请先投币");
+				}
 			}
 		});
 		

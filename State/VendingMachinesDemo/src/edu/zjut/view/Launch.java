@@ -21,7 +21,7 @@ public class Launch extends JFrame{
 		add(panelTip, BorderLayout.CENTER);
 		add(panelDrinkStore, BorderLayout.SOUTH);
 		setTitle("自动售货机");
-		setSize(600,350);
+		setSize(600,620);
 		setLocationRelativeTo(null); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
