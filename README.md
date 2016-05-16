@@ -6,6 +6,6 @@
 > - **Observer(观察者模式)/**
 >   - *[股票交易系统/](https://github.com/Sinton/DesignPatterns/blob/master/Observer/StockTradingSystem/README.md)*
 > - **Singleton(单例模式)/**
->   - *[线程示例/](https://github.com/Sinton/DesignPatterns/blob/master/Observer/ThreadDemo/README.md)*
+>   - *[线程示例/](https://github.com/Sinton/DesignPatterns/blob/master/Singleton/ThreadDemo/README.md)*
 > - **State(状态模式)/**
->   - *[自动售货机/](https://github.com/Sinton/DesignPatterns/blob/master/Observer/VendingMachine/README.md)*
+>   - *[自动售货机/](https://github.com/Sinton/DesignPatterns/blob/master/State/VendingMachine/README.md)*

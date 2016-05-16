@@ -1,4 +1,4 @@
-## Learning Design Patterns In Java Notes [中文](https://github.com/Sinton/DesignPatterns/blob/master/README.md)
+## Learning Design Patterns For Java Notes [中文](https://github.com/Sinton/DesignPatterns/blob/master/README.md)
 ### Document Tree
 > ##### Demo
 > - **Strategy/**
@@ -6,6 +6,6 @@
 > - **Observer/**
 >   - *[StockTradingSystem/](https://github.com/Sinton/DesignPatterns/blob/master/Observer/StockTradingSystem/README.md)*
 > - **Singleton/**
->   - *[ThreadDemo/](https://github.com/Sinton/DesignPatterns/blob/master/Observer/ThreadDemo/README.md)*
+>   - *[ThreadDemo/](https://github.com/Sinton/DesignPatterns/blob/master/Singleton/ThreadDemo/README.md)*
 > - **State/**
->   - *[VendingMachine/](https://github.com/Sinton/DesignPatterns/blob/master/Observer/VendingMachine/README.md)*
+>   - *[VendingMachine/](https://github.com/Sinton/DesignPatterns/blob/master/State/VendingMachine/README.md)*
