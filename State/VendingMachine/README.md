@@ -23,15 +23,15 @@
 ###### **问题分析**
 > 1. 我们经常见到一些商品自动售货机，比如饮料自动售货机。当把若干元硬币投入饮料售货机，就会获得自己想要的饮料。
 > 2. 饮料自动售货机一共有四种状态：
-> - SoldState // 售出状态
-> - SoleOutState // 售完状态
-> - NoMoneyState // 未投币状态
-> - HasMoneyState //投币状态
+	- SoldState // 售出状态
+	- SoleOutState // 售完状态
+	- NoMoneyState // 未投币状态
+	- HasMoneyState //投币状态
 > 3. 根据具体情况，自动售货机目前可能有四个方法： 
-> - insertMoney(); // 投币
-> - backMoney(); // 退币
-> - turnCrank(); // 转动曲柄，确认
-> - dispense(); // 出货
+	- insertMoney(); // 投币
+	- backMoney(); // 退币
+	- turnCrank(); // 转动曲柄，确认
+	- dispense(); // 出货
 
 ###### **UML状态图**
 ![](http://homework.0x1010.com//screenshot/designpatterns/05-01.png)
@@ -45,31 +45,23 @@
  * 自动售货机命令行（无设计模式）
  */
 public class VendingMachine {
-
 	// 已投币
 	private final static int HAS_MONEY = 0;
-	
 	// 未投币
 	private final static int NO_MONEY = 1;
-	
 	// 售出商品
 	private final static int SOLD = 2;
-	
 	// 商品售罄
 	private final static int SOLD_OUT = 3;
-
 	// 当前状态
 	private int currentStatus = NO_MONEY;
-	
 	// 商品数量
 	private int count = 0;
-
 	public VendingMachine(int count) {
 		this.count = count;
 		if (count > 0)
 			currentStatus = NO_MONEY;
 	}
-
 	/**
 	 * 投入硬币，任何状态用户都可能投币
 	 */
@@ -90,7 +82,6 @@ public class VendingMachine {
 				break;
 		}
 	}
-
 	/**
 	 * 退币，任何状态用户都可能退币
 	 */
@@ -111,7 +102,6 @@ public class VendingMachine {
 				break;
 			}
 	}
-
 	/**
 	 * 转动手柄购买,任何状态用户都可能转动手柄
 	 */
@@ -133,7 +123,6 @@ public class VendingMachine {
 				break;
 		}
 	}
-
 	/**
 	 * 发放商品
 	 */
@@ -155,7 +144,6 @@ public class VendingMachine {
 				break;
 		}
 	}
-	
 	public static void main(String[] args) {
 		VendingMachine machine = new VendingMachine(10);  
         machine.insertMoney();
@@ -187,15 +175,15 @@ public class VendingMachine {
 
 ###### **初级方案实现小结**
 > 1. 功能性
->  - 基本实现了所需功能
+	- 基本实现了所需功能
 > 2. 扩展性
-> - 但需求发生变动时，有些事情是不可避免的 —— 修改各个状态的代码块
+	- 但需求发生变动时，有些事情是不可避免的 —— 修改各个状态的代码块
 
 > 3. 冗余性
-> - 代码冗余度高，都要为每个状态写一个`switch()`代码块
+	- 代码冗余度高，都要为每个状态写一个`switch()`代码块
 
 > 4. 缺陷
-> - 如果在我们刚写的代码上直接添加，则需要在每个动作的`switch()`中添加判断条件，且非常容易出错，无法做到高内聚，低耦合。所以现在我们需要对代码进行重构
+	- 如果在我们刚写的代码上直接添加，则需要在每个动作的`switch()`中添加判断条件，且非常容易出错，无法做到高内聚，低耦合。所以现在我们需要对代码进行重构
 
 ###### **优化设计方案，重构代码，使用`State`设计模式解决问题**
 > - 状态抽象接口类`State`
@@ -204,22 +192,18 @@ public class VendingMachine {
  * 状态抽象接口
  */
 public interface State {
-	
 	/**
 	 * 投币
 	 */
 	public void insertMoney();
-
 	/**
 	 * 退币
 	 */
 	public void backMoney();
-
 	/**
 	 * 转动曲柄明确购买
 	 */
 	public void turnCrank();
-
 	/**
 	 * 售出商品
 	 */
@@ -233,24 +217,19 @@ public interface State {
  * 已投币状态
  */
 public class HasMoneyState implements State {
-
 	private VendingMachine machine;
-
 	public HasMoneyState(VendingMachine machine) {
 		this.machine = machine;
 	}
-
 	@Override
 	public void insertMoney() {
 		System.out.println("您又进行了投币");
 	}
-
 	@Override
 	public void backMoney() {
 		System.out.println("退币成功");
 		machine.setState(machine.getNoMoneyState());
 	}
-
 	@Override
 	public void turnCrank() {
 		System.out.println("手柄已转动,且正在出货");
@@ -260,7 +239,6 @@ public class HasMoneyState implements State {
 			machine.setState(machine.getSoldOutState());
 		}
 	}
-
 	@Override
 	public void dispense() {
 		throw new IllegalStateException("非法状态！");
@@ -274,29 +252,23 @@ public class HasMoneyState implements State {
  * 未投币状态
  */
 public class NoMoneyState implements State {
-
 	private VendingMachine machine;
-
 	public NoMoneyState(VendingMachine machine) {
 		this.machine = machine;
 	}
-
 	@Override
 	public void insertMoney() {
 		System.out.println("投币成功");
 		machine.setState(machine.getHasMoneyState());
 	}
-
 	@Override
 	public void backMoney() {
 		System.out.println("您未投币,请先投币");
 	}
-
 	@Override
 	public void turnCrank() {
 		System.out.println("您未投币,无法出售");
 	}
-
 	@Override
 	public void dispense() {
 		throw new IllegalStateException("非法状态！");
@@ -310,29 +282,23 @@ public class NoMoneyState implements State {
  * 出售状态
  */
 public class SoldState implements State {
-
 	private VendingMachine machine;
-
 	public SoldState(VendingMachine machine) {
 		this.machine = machine;
 	}
-
 	@Override
 	public void insertMoney() {
 		System.out.println("正在出货，请勿投币");
 	}
-
 	@Override
 	public void backMoney() {
 		System.out.println("退币成功");
 		machine.setState(machine.getNoMoneyState());
 	}
-
 	@Override
 	public void turnCrank() {
 		System.out.println("正在出货，请勿重复转动手柄");
 	}
-
 	@Override
 	public void dispense() {
 		machine.dispense();
@@ -352,29 +318,23 @@ public class SoldState implements State {
  * 售罄状态
  */
 public class SoldOutState implements State {
-
 	private VendingMachine machine;
-
 	public SoldOutState(VendingMachine machine) {
 		this.machine = machine;
 	}
-
 	@Override
 	public void insertMoney() {
 		System.out.println("投币成功");
 		machine.setState(machine.getHasMoneyState());
 	}
-
 	@Override
 	public void backMoney() {
 		System.out.println("您未投币,请先投币");
 	}
-
 	@Override
 	public void turnCrank() {
 		System.out.println("商品已售罄");
 	}
-
 	@Override
 	public void dispense() {
 		throw new IllegalStateException("非法状态！");
@@ -388,15 +348,12 @@ public class SoldOutState implements State {
  * 自动售货机
  */
 public class VendingMachine {
-	
 	private State noMoneyState;
 	private State hasMoneyState;
 	private State soldState;
 	private State soldOutState;
-
 	private int count = 0;
 	private State currentState = noMoneyState;
-
 	public VendingMachine(int count) {
 		noMoneyState = new NoMoneyState(this);
 		hasMoneyState = new HasMoneyState(this);
@@ -407,48 +364,38 @@ public class VendingMachine {
 			currentState = noMoneyState;
 		}
 	}
-
 	public void insertMoney() {
 		currentState.insertMoney();
 	}
-
 	public void backMoney() {
 		currentState.backMoney();
 	}
-
 	public void turnCrank() {
 		currentState.turnCrank();
 		if (currentState == soldState)
 			currentState.dispense();
 	}
-
 	public void dispense() {
 		System.out.println("售出一件饮料...");
 		if (count != 0) {
 			count -= 1;
 		}
 	}
-
 	public int getCount() {
 		return count;
 	}
-
 	public void setState(State state) {
 		this.currentState = state;
 	}
-
 	public State getHasMoneyState() {
 		return hasMoneyState;
 	}
-
 	public State getNoMoneyState() {
 		return noMoneyState;
 	}
-
 	public State getSoldState() {
 		return soldState;
 	}
-
 	public State getSoldOutState() {
 		return soldOutState;
 	}
@@ -506,28 +453,9 @@ public class Main {
 
 ###### **运行结果及效果**
 > - 运行结果
+> 
 > ![](http://homework.0x1010.com/screenshot/designpatterns/05-04.png)
 > ![](http://homework.0x1010.com/screenshot/designpatterns/05-05.png)
-
-###### **组员分工情况**
-> - 班级：软件工程专升本1502
-> - 组员
-> 1. 
-> 姓名：戴剑锋（组长）
-> 学号：201526740205
-> 任务：文档攥写、讨论相关的具体设计、UML建模图
->  2. 
-> 姓名：颜孙通
-> 学号：201526740222
-> 任务：PPT演讲、PPT完善与修改、使用State模式设计并且对GUI模块化代码实现、完善整理文档并用Markdown对文档重新排版、修订UML建模图
-> 3. 
-> 姓名：裘武炀
-> 学号：201526740218
-> 任务：收集相关资料、State设计模式思路整理、非State模式设计的代码实现、使用State模式设计的代码实现、PPT制作
-> 4. 
-> 姓名：杨鹤
-> 学号：201526740223
-> 任务：文档总结、讨论相关的具体设计、完善文档的攥写
 
 ###### **总结**
 > - 适用情景
