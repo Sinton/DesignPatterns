@@ -10,6 +10,7 @@ public class LimitInstanceClass {
 	private int id;
 	private boolean isBusy;
 	private String accessMessage;
+	private static LimitInstanceClass instanceObject = null;
 	
 	// 使用线程安全的容器
 	private static Vector<LimitInstanceClass> classVector;
@@ -28,12 +29,14 @@ public class LimitInstanceClass {
 	 */
 	public static synchronized LimitInstanceClass getInstance() {
 		if(classVector == null){
-			int count = new Tools().getCount();
-			initContainer(count);
-			LimitInstanceClass instanceObject = classVector.get(new Random().nextInt(count));
-			instanceObject.accessMessage = "对象--ID：" + instanceObject.id + "\t";
-			instanceObject.isBusy = true;
-			return instanceObject;
+			synchronized(LimitInstanceClass.class) {
+				int count = new Tools().getCount();
+				initContainer(count);
+				instanceObject = classVector.get(new Random().nextInt(count));
+				instanceObject.accessMessage = "对象--ID：" + instanceObject.id + "\t";
+				instanceObject.isBusy = true;
+				return instanceObject;
+			}
 		} else {
 			for (int i = 0; i < classVector.size(); i++) {
 				if (!classVector.elementAt(i).isBusy) {
