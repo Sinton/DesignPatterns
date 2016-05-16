@@ -9,10 +9,12 @@
 > ![](http://homework.0x1010.com/screenshot/designpatterns/03-01.png)
 
 ###### **运行结果及效果分析**
-- 运行结果
-![](http://homework.0x1010.com/screenshot/designpatterns/03-02.png)
-- 效果分析
-由于有`synchronized`关键字的修饰，对线程进行了加锁操作只有当线程执行结束之后别的线程才能进来
+> - 运行结果
+> 
+> ![](http://homework.0x1010.com/screenshot/designpatterns/03-02.png)
+> 
+> - 效果分析
+> 由于有`synchronized`关键字的修饰，对线程进行了加锁操作只有当线程执行结束之后别的线程才能进来
 
 ###### **主要核心代码**
 **`getInstance()` 方法**
