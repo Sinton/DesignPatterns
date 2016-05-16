@@ -1,24 +1,11 @@
-## Learning design patterns for java notes [中文](https://github.com/Sinton/DesignPatterns/blob/master/README.md)
-### Document tree
-
+## Learning Design Patterns In Java Notes [中文](https://github.com/Sinton/DesignPatterns/blob/master/README.md)
+### Document Tree
 > ##### Demo
 > - **Strategy/**
->   - *PrinterSalesSystem/*
->     - src/
->       - zjut.model/bean/
->         - Discount.java
->         - Printer.java
->       - zjut.model/discount/
->         - FixedDiscount.java
->         - NewDiscount.java
->         - RateDiscount.java
->         - Undiscounted.java
->       - zjut.model/printer/
->         - CanonPrinter.java
->         - HpPrinter.java
->         - LenovoPrinter.java
->       - zjut.model/utils/
->         - Repository.java
->         - Tools.java
->       - zjut.view/
->         - MainApplication.java
+>   - *[PrinterSalesSystem/](https://github.com/Sinton/DesignPatterns/blob/master/Strategy/PrinterSalesSystem/README.md)*
+> - **Observer/**
+>   - *[StockTradingSystem/](https://github.com/Sinton/DesignPatterns/blob/master/Observer/StockTradingSystem/README.md)*
+> - **Singleton/**
+>   - *[ThreadDemo/](https://github.com/Sinton/DesignPatterns/blob/master/Observer/ThreadDemo/README.md)*
+> - **State/**
+>   - *[VendingMachine/](https://github.com/Sinton/DesignPatterns/blob/master/Observer/VendingMachine/README.md)*
