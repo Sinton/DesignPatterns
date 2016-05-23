@@ -1,5 +1,7 @@
 package edu.zjut.model;
 
+import edu.zjut.view.Launch;
+
 /** 
  * 自动售货机 
  */  
@@ -37,6 +39,7 @@ public class VendingMachine {
 	}
 
 	public void dispense() {
+		Launch.panelTip.labelTakeDrinksTip.setText("售出一瓶饮料，请取走");
 		System.out.println("售出一瓶饮料");
 		if (count != 0)
 			count -= 1;
