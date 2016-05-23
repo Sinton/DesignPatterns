@@ -57,8 +57,8 @@ public class DrinkStorePanel extends JPanel {
 							}
 						} else {
 							// 饮料已售完或暂时不能找钱，需要提示客户
-							Launch.machine.setState(Launch.machine.getSoldOutState());
 							panelTip.labelTakeDrinksTip.setText("已经售罄");
+							Launch.machine.setState(Launch.machine.getSoldOutState());
 						}
 					} else
 						panelTip.labelTakeDrinksTip.setText("目前无可用金额，请先投币！");

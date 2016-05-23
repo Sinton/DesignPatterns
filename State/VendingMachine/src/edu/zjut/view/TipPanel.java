@@ -7,7 +7,7 @@ public class TipPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public JLabel labelTakeDrinksTip = new JLabel();
+	JLabel labelTakeDrinksTip = new JLabel();
 	public TipPanel() {
 		labelTakeDrinksTip.setText("请选择要购买的饮料");
 		add(labelTakeDrinksTip);

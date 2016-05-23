@@ -12,7 +12,7 @@ public class Launch extends JFrame{
 	
 	final static VendingMachine machine = new VendingMachine();
 	
-	public static final TipPanel panelTip = new TipPanel();
+	private static final TipPanel panelTip = new TipPanel();
 	private static final CoinPanel panelCoinSlot = new CoinPanel(panelTip);
 	private static final DrinkStorePanel panelDrinkStore = new DrinkStorePanel(panelCoinSlot, panelTip);
 	
