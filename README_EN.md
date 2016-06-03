@@ -9,3 +9,5 @@
 >   - *[ThreadDemo/](https://github.com/Sinton/DesignPatterns/blob/master/Singleton/ThreadDemo/README.md)*
 > - **State/**
 >   - *[VendingMachine/](https://github.com/Sinton/DesignPatterns/blob/master/State/VendingMachine/README.md)*
+> - **Decorator/**
+>   - *[IODemo/](https://github.com/Sinton/DesignPatterns/blob/master/Decorator/IODemo/README.md)*

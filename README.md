@@ -9,3 +9,5 @@
 >   - *[线程示例/](https://github.com/Sinton/DesignPatterns/blob/master/Singleton/ThreadDemo/README.md)*
 > - **State(状态模式)/**
 >   - *[自动售货机/](https://github.com/Sinton/DesignPatterns/blob/master/State/VendingMachine/README.md)*
+> - **Decorator(装饰者模式)/**
+>   - *[IO流文本读写替换示例/](https://github.com/Sinton/DesignPatterns/blob/master/Decorator/IODemo/README.md)*

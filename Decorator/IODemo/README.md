@@ -17,7 +17,7 @@
 - 样例输出
 > 你是不是*，自古二楼出*
 - 运行结果
-![](http://homework.0x1010.com/screenshot/designpatterns/04-02.png)
+> ![](http://homework.0x1010.com/screenshot/designpatterns/04-02.png)
 
 ###### **主要核心代码**
 **`write()` 方法**
