@@ -15,7 +15,7 @@
 > 你是不是傻逼，自古二楼出傻逼
 
 - 样例输出
-> 你是不是*，自古二楼出*
+> 你是不是\*，自古二楼出\*
 - 运行结果
 > ![](http://homework.0x1010.com/screenshot/designpatterns/04-02.png)
 
